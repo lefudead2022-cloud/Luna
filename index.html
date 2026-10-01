@@ -26,6 +26,13 @@
   <button id="volBtn" class="vol-btn" aria-label="Volumen">🔉 15</button>
 </div>
 
+<div id="gate" class="gate">
+  <button id="gateBtn" class="gate-btn">
+    <span class="gate-name">Luna</span>
+    <span class="gate-sub">toca para abrir</span>
+  </button>
+</div>
+
 <main>
 
   <section class="hero reveal">
@@ -201,10 +208,13 @@
 
 </main>
 
+<div id="yt" class="yt-host"></div>
+
 <audio id="music" loop preload="none">
   <source src="cancion.mp3" type="audio/mpeg">
 </audio>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script src="script.js"></script>
 </body>
 </html>

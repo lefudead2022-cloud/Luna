@@ -95,8 +95,7 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
 
 const SONG = {
   title: 'Saturn — Sleeping At Last',
-  youtube: 'dzNvk80XY9s',
-  volume: 15
+  youtube: 'dzNvk80XY9s'
 };
 
 const songName = document.getElementById('songName');
@@ -105,18 +104,17 @@ if (SONG.title) songName.textContent = `♫ ${SONG.title}`;
 const music = document.getElementById('music');
 const musicBtn = document.getElementById('musicBtn');
 const volBtn = document.getElementById('volBtn');
-let player = null;
+const gate = document.getElementById('gate');
+const gateBtn = document.getElementById('gateBtn');
+
 const VOLUMES = [0, 8, 15, 30];
 let volIndex = 2;
+let yt = null;
+let ytReady = false;
 
 function applyVolume() {
   const pct = VOLUMES[volIndex];
-  if (player) {
-    player.contentWindow.postMessage(
-      `{"event":"command","func":"setVolume","args":["${pct / 100}"]}`,
-      '*'
-    );
-  }
+  if (yt && ytReady) yt.setVolume(pct);
   music.volume = Math.min(1, Math.max(0.01, pct / 100));
   volBtn.textContent = pct === 0 ? '🔇' : `🔉 ${pct}`;
 }
@@ -127,53 +125,78 @@ volBtn.addEventListener('click', (e) => {
   applyVolume();
 });
 
-function makePlayer() {
-  if (player || !SONG.youtube) return;
-  const id = SONG.youtube.split('/').pop().split('?')[0].split('=').pop();
-  const frame = document.createElement('iframe');
-  frame.src =
-    `https://www.youtube-nocookie.com/embed/${id}` +
-    `?autoplay=1&loop=1&playlist=${id}&controls=0&modestbranding=1&playsinline=1&volume=${SONG.volume}`;
-  frame.allow = 'autoplay';
-  frame.style.cssText =
-    'position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;border:0;left:-9999px';
-  document.body.appendChild(frame);
-  player = frame;
-  musicBtn.classList.add('playing');
-  setTimeout(applyVolume, 400);
-  setTimeout(applyVolume, 1500);
+function onApiReady() {
+  ytReady = true;
+  if (yt) {
+    yt.setVolume(VOLUMES[volIndex]);
+    yt.playVideo();
+  }
 }
 
-music.addEventListener('error', () => {
-  if (musicBtn.classList.contains('local')) return;
-  musicBtn.classList.add('local');
-  if (SONG.youtube) makePlayer();
+window.onYouTubeIframeAPIReady = onApiReady;
+
+function startYouTube() {
+  if (yt || !SONG.youtube) return;
+  yt = new YT.Player('yt', {
+    videoId: SONG.youtube,
+    playerVars: {
+      autoplay: 1,
+      loop: 1,
+      playlist: SONG.youtube,
+      controls: 0,
+      modestbranding: 1,
+      playsinline: 1,
+      rel: 0,
+      start: 0
+    },
+    events: {
+      onReady: (e) => {
+        e.target.setVolume(VOLUMES[volIndex]);
+        e.target.playVideo();
+        musicBtn.classList.add('playing');
+      },
+      onStateChange: (e) => {
+        if (e.data === YT.PlayerState.PLAYING) musicBtn.classList.add('playing');
+        if (e.data === YT.PlayerState.PAUSED) musicBtn.classList.remove('playing');
+      }
+    }
+  });
+}
+
+function startMusic() {
+  music.volume = VOLUMES[volIndex] / 100;
+  const played = music.play();
+  if (played && played.catch) {
+    played.catch(() => startYouTube());
+  }
+}
+
+gateBtn.addEventListener('click', () => {
+  gate.classList.add('gone');
+  document.body.classList.add('opened');
+  startMusic();
+  setTimeout(() => gate.remove(), 900);
 });
 
 musicBtn.addEventListener('click', () => {
-  if (player) {
-    if (player.paused) {
-      player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-      musicBtn.classList.add('playing');
+  if (yt && ytReady) {
+    if (musicBtn.classList.contains('playing')) {
+      yt.pauseVideo();
     } else {
-      player.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-      musicBtn.classList.remove('playing');
+      yt.playVideo();
     }
     return;
   }
-  music.play().catch(() => {});
+  if (music.paused) {
+    music.play().catch(() => {});
+  } else {
+    music.pause();
+  }
 });
 
-function startOnFirstTouch() {
-  if (!SONG.youtube) {
-    music.play().catch(() => {});
-    return;
-  }
-  if (musicBtn.classList.contains('playing')) return;
-  makePlayer();
-}
-
-window.addEventListener('pointerdown', startOnFirstTouch, { passive: true });
+music.addEventListener('error', () => {
+  if (songName && SONG.youtube) startYouTube();
+});
 
 applyVolume();
 

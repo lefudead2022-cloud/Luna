@@ -316,6 +316,70 @@ footer .sign strong{
 
 footer #foot{margin:0}
 
+.yt-host{
+  position:fixed;
+  left:-9999px;
+  top:0;
+  width:1px;
+  height:1px;
+  opacity:.01;
+  border:0;
+  pointer-events:none;
+}
+
+.gate{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(70% 60% at 50% 45%, #0a0c1c 0%, #03040b 100%);
+  transition:opacity .85s ease, visibility .85s;
+}
+
+.gate.gone{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.gate-btn{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1.4em;
+  background:none;
+  border:0;
+  padding:2em 1.5em;
+  cursor:pointer;
+  font-family:inherit;
+  color:var(--ink);
+  animation:breathe 3.4s ease-in-out infinite;
+}
+
+.gate-name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;
+  font-size:clamp(3.4rem,15vw,7rem);
+  line-height:1;
+  background:linear-gradient(180deg,#fff 10%,var(--rose) 130%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.gate-sub{
+  font-size:.68rem;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  color:var(--dim);
+}
+
+.gate-btn:active{transform:scale(.98)}
+
+body.opened .player{opacity:1}
+
 .player{
   position:fixed;
   right:20px;
@@ -324,6 +388,8 @@ footer #foot{margin:0}
   display:flex;
   align-items:center;
   gap:8px;
+  opacity:0;
+  transition:opacity .8s ease .5s;
 }
 
 .music-btn{
@@ -402,4 +468,5 @@ footer #foot{margin:0}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   .reveal{opacity:1;transform:none}
+  .gate-btn{animation:none}
 }
