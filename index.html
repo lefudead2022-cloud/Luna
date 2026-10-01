@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna · 1 de octubre</title>
+<meta name="description" content="Hay noches que parecen no terminar nunca. Y quizás esta sea una de esas noches que quiero recordar para siempre.">
+<meta property="og:title" content="Luna · 1 de octubre">
+<meta property="og:description" content="Hay noches que parecen no terminar nunca. Y quizás esta sea una de esas noches que quiero recordar para siempre.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<div class="glow" aria-hidden="true"></div>
+
+<div class="player">
+  <button id="musicBtn" class="music-btn" aria-label="Activar música">
+    <span class="eq"><i></i><i></i><i></i></span>
+    <span class="music-label">Música</span>
+  </button>
+  <button id="volBtn" class="vol-btn" aria-label="Volumen">🔉 15</button>
+</div>
+
+<main>
+
+  <section class="hero reveal">
+    <p class="eyebrow">1 de octubre</p>
+    <h1>Luna</h1>
+    <p class="hero-poem">
+      Hay noches que parecen no terminar nunca.<br>
+      Y quizás esta sea una de esas noches<br>
+      que quiero recordar para siempre.
+    </p>
+    <p class="distance">Colombia <span>—</span> Chile</p>
+    <span class="scroll-hint">desliza</span>
+  </section>
+
+  <section class="block reveal">
+    <h2>Cómo llegamos aquí</h2>
+    <p>A veces pienso en todo lo que tuvo que pasar para que termináramos aquí.</p>
+    <p>Un día éramos dos personas que apenas se conocían. Después fueron mensajes, llamadas, risas, silencios, noches que se alargaban más de lo que deberían y conversaciones que ninguno de los dos quería terminar.</p>
+    <p>Y sin darme cuenta, te fuiste convirtiendo en alguien importante para mí.</p>
+    <p>No sé exactamente en qué momento pasó.</p>
+    <p class="beat">Solo sé que llegó un punto en el que tu nombre ya no era simplemente un nombre en una pantalla.</p>
+    <p class="lead">Eras tú.</p>
+    <p>Y yo quería saber cómo estabas.<br>
+      Quería escucharte.<br>
+      Quería contarte cosas.<br>
+      Quería estar ahí.</p>
+    <p>Y quizá eso sea lo que más me gusta de lo que tenemos: que no empezó siendo perfecto.</p>
+    <p class="beat">Simplemente empezó siendo nuestro.</p>
+  </section>
+
+  <section class="block reveal">
+    <h2>Lo que pasó antes</h2>
+    <p>No quiero fingir que todo fue bonito.</p>
+    <p class="beat">Nos equivocamos.</p>
+    <p class="beat">Los dos.</p>
+    <p>Fuimos personas que todavía no sabían cómo querer sin miedo, cómo hablar cuando algo dolía o cómo quedarse cuando las cosas empezaban a complicarse.</p>
+    <p>Y yo también hice cosas que todavía recuerdo.</p>
+    <p>Hubo un momento en el que desaparecí.</p>
+    <p>Dejé de responder. Cerré cosas. Me alejé.</p>
+    <p>Y aunque tenía mis razones, sé que desde tu lado probablemente solo se sintió como si hubiera decidido irme.</p>
+    <p class="beat">Lo siento.</p>
+    <p>No quiero justificarlo.</p>
+    <p>Solo quiero que sepas que hoy entiendo algo que antes no entendía:</p>
+    <p class="lead">desaparecer no soluciona aquello que nos duele.</p>
+    <p>Y no quiero volver a hacerlo.</p>
+    <p>No quiero que cuando algo nos asuste, nuestra primera reacción sea soltarnos.</p>
+    <p class="beat">Quiero aprender a quedarme.<br>
+      A hablar.<br>
+      A escucharte.<br>
+      A decirte cuando algo me duele en lugar de encerrarme.</p>
+    <p>Porque si voy a pedirte que estés conmigo, también tengo que aprender a estar contigo.</p>
+  </section>
+
+  <section class="quote reveal">
+    <blockquote>A veces crecer no significa convertirse en otra persona.<br>Significa aprender a no volver a cometer los mismos errores.</blockquote>
+  </section>
+
+  <section class="block reveal">
+    <h2>Lo que quiero para ti</h2>
+    <p>Y hay algo que quiero decirte que va mucho más allá de que me gustes.</p>
+    <p class="lead">Quiero que tengas un futuro del que puedas sentirte orgullosa.</p>
+    <p>No uno que yo haya elegido por ti.</p>
+    <p>No uno en el que tengas que convertirte en lo que los demás esperan.</p>
+    <p class="beat">El tuyo.</p>
+    <p>Quiero verte conseguir cosas que hoy quizá parecen demasiado lejanas.</p>
+    <p>Quiero que algún día puedas mirar hacia atrás y pensar:</p>
+    <p class="pull-small">“Todo aquello que me daba miedo no consiguió detenerme.”</p>
+    <p>Sé que la vida no va a ser perfecta.</p>
+    <p>Van a existir días malos.</p>
+    <p>Días en los que vas a sentir que no avanzas.</p>
+    <p>Días en los que vas a preguntarte si realmente puedes conseguir todo aquello que quieres.</p>
+    <p>Y cuando lleguen esos días, no quiero prometerte una mentira como que nunca vas a sufrir.</p>
+    <p>Quiero decirte algo mucho más sencillo:</p>
+    <p class="lead">todavía puedes seguir.</p>
+    <p>Y si algún día quieres hacerlo conmigo...</p>
+    <p class="beat">Quiero caminar a tu lado.</p>
+  </section>
+
+  <section class="block reveal">
+    <h2>Lo que quiero contigo</h2>
+    <p>No quiero pedirte que seas mi mundo.</p>
+    <p class="beat">Quiero que tengas el tuyo.</p>
+    <p>Tus sueños.<br>
+      Tus metas.<br>
+      Tus amigos.<br>
+      Tus momentos.<br>
+      Tu propia vida.</p>
+    <p>Y yo quiero tener la mía también.</p>
+    <p>Pero quiero que, entre todos esos caminos, exista uno que podamos recorrer juntos.</p>
+    <p>Quiero las llamadas que se nos hacen demasiado largas.</p>
+    <p>Quiero reírnos por cosas que probablemente nadie más entendería.</p>
+    <p>Quiero poder contarte algo que me pasó y que tu primera reacción sea reírte de mí.</p>
+    <p>Quiero estar cuando estés feliz.</p>
+    <p class="beat">Y también cuando no tengas ganas de hablar.</p>
+    <p>Quiero aprender cuándo abrazarte, cuándo escucharte y cuándo simplemente quedarme contigo en silencio.</p>
+    <p>Quiero que podamos mirar atrás algún día y decir:</p>
+    <p class="pull-small">“¿Te acuerdas de cuando todo esto estaba solamente en nuestra cabeza?”</p>
+    <p>Y entonces mirar todo lo que construimos.</p>
+    <p>Porque sí.</p>
+    <p class="lead">Tengo un futuro en mi cabeza.</p>
+    <p>Uno enorme.</p>
+    <p>Quizá demasiado ambicioso.</p>
+    <p>Pero por primera vez no me asusta imaginarlo.</p>
+    <p>Porque cuando pienso en los próximos años, no solamente pienso en lo que quiero conseguir.</p>
+    <p>Pienso en las personas que quiero que sigan ahí cuando lo consiga.</p>
+    <p class="beat">Y tú eres una de ellas.</p>
+  </section>
+
+  <section class="quote reveal">
+    <blockquote>Estar seguro de lo que deseamos es el primer paso para poder imaginar un futuro más vivido.</blockquote>
+  </section>
+
+  <section class="block reveal">
+    <h2>Entonces...</h2>
+    <p>Luna.</p>
+    <p>Después de todo este tiempo...</p>
+    <p>Después de todo lo que pasó.</p>
+    <p>Después de haberme ido y haber vuelto.</p>
+    <p>Después de todas las cosas que no dijimos cuando debimos decirlas...</p>
+    <p>Quiero dejar de esconder esto detrás de bromas, indirectas o páginas bonitas.</p>
+    <p class="lead">Me gustas.</p>
+    <p>Me gustas de una manera que no quiero tomar a la ligera.</p>
+    <p>Y no quiero pedirte una respuesta porque sientas que me debes algo.</p>
+    <p>Quiero que sea porque tú también lo sientes.</p>
+    <p>Quiero empezar otra vez.</p>
+    <p>Pero no como si todo lo anterior nunca hubiera existido.</p>
+    <p>Quiero empezar sabiendo lo que aprendimos.</p>
+    <p>Sabiendo que podemos equivocarnos.</p>
+    <p>Sabiendo que habrá distancia.</p>
+    <p>Sabiendo que habrá días difíciles.</p>
+    <p>Y aun así...</p>
+    <p class="lead">elegir intentarlo.</p>
+    <p>Por eso, Luna...</p>
+    <p>Hoy, <strong>1 de octubre</strong>, quiero preguntarte algo.</p>
+    <p>No quiero que seas mi salvación.</p>
+    <p>No quiero ser la tuya.</p>
+    <p>Quiero que seamos dos personas intentando construir algo que valga la pena.</p>
+    <p class="question">¿Quieres hacerlo conmigo?</p>
+  </section>
+
+  <section class="song reveal">
+    <p class="song-label">Pon esto mientras lees</p>
+    <p class="song-name" id="songName"></p>
+  </section>
+
+  <section class="ask reveal">
+    <h2>¿Quieres?</h2>
+    <div class="answers">
+      <button class="btn yes" id="btnYes">Sí, quiero</button>
+      <button class="btn later" id="btnLater">Ahora no</button>
+    </div>
+    <p class="note">No importa cuál sea tu respuesta.<br>
+      Solo gracias por haber llegado hasta aquí.<br>
+      Y gracias por haber formado parte de mi vida.</p>
+  </section>
+
+  <section class="after" id="afterYes" hidden>
+    <h2>Lo sabía.</h2>
+    <p class="big">Te quiero, Luna. De todas las formas que todavía sé decir.</p>
+    <p>Nos vemos el 1 de octubre. Y el 2, y el 3, y el que sigue.</p>
+  </section>
+
+  <section class="after" id="afterLater" hidden>
+    <h2>Te quiero igual.</h2>
+    <p class="big">No hay prisa y no hay castigo. Solo házmelo saber cuando puedas.</p>
+    <p>Voy a seguir aquí.</p>
+  </section>
+
+  <footer>
+    <p class="sign">Con todo lo que me quedé,<br><strong>Lefu</strong></p>
+    <p id="foot"></p>
+  </footer>
+
+</main>
+
+<audio id="music" loop preload="none">
+  <source src="cancion.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
